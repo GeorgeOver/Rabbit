@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Sign Up
+{% endblock %}
+
+{% block content %}
+	{% if msg %}
+		<script>alert('{{ msg }}')</script>
+	{% endif %}
+	<form action="{% url 'order' %}" method='post'>
+        {% csrf_token %}
+        <label>Registration ID: </label>
+		<input type='text' name='registration_id'>
+		<label>Phone Number: </label>
+        <input type='text' name='phone'>
+        <label>Positions to order: </label>
+		<input type='text' name='positions'>
+		<input type="submit" value="Place Order">
+	</form>
+{% endblock %}

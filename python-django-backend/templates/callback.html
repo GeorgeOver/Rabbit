@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Sign Up
+{% endblock %}
+
+{% block content %}
+	{% if msg %}
+		<script>alert('{{ msg }}')</script>
+	{% endif %}
+	<form action="{% url 'callback' %}" method='post'>
+		{% csrf_token %}
+		<label>Phone Number: </label>
+		<input type='text' name='phone'>
+		<input type="submit" value="Call Back">
+	</form>
+{% endblock %}

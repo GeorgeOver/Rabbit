@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Dashboard
+{% endblock %}
+
+{% block content %}
+	<h1>Welcome {{ email }}</h1>
+	<div>
+		<button onclick="location.href={% url 'logout' %}">Logout</button>
+		<button type='button' onclick="location.href={% url 'callback' %}">Callback</button>
+		<button type='button' onclick="location.href={% url 'order' %}">Place Order</button>
+	</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% if msg %}
+	<script>
+		alert('{{msg}}')
+	</script>
+{% endif %}
+<html lang="en">
+
+{% block title %}
+	Login
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'post_sign' %}" method="post">
+        {% csrf_token %} 
+        Email :
+        <input type="email" name="email"> 
+        Password:
+        <input type="password" name="password">
+        <input type="submit" value="SignIn">
+    </form>
+    <p><a href="{% url 'password_reset' %}">Forgot password ?</a></p>
+    <button type='button' onclick="location.href={% url 'signup' %}">SignUp</button>
+{% endblock %}
