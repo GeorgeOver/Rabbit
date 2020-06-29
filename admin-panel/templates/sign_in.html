@@ -1,0 +1,46 @@
+
+
+{% if msg %}
+	<script>
+		alert('{{msg}}')
+	</script>
+{% endif %}
+<html lang="en">
+
+    <style type="text/css">
+        .button-green {
+            background-color: #4CAF50; 
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+            transition-duration: 0.4s;
+        }
+        .button-green:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+        }
+        .sansserif {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+{% block title %}
+	<h3 class='sansserif'>Введите Email и пароль</h3>
+{% endblock %}
+
+{% block content %}
+    <form class='sansserif' action="{% url 'manage' %}" method="post">
+        {% csrf_token %} 
+        Email :
+        <input type="email" name="email"> 
+        Password:
+        <input type="password" name="password">
+        <input class='button-green' type="submit" value="Войти">
+    </form>
+{% endblock %}

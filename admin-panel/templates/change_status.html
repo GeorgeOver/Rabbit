@@ -1,0 +1,70 @@
+{% block content %}
+<style type="text/css">
+    .button-green {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+    }
+    .button-green:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+    .sansserif {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+	<h2 class="sansserif">Изменение статуса заказа № {{ order }}</h2>
+	<div>
+        <form class="sansserif" action="{% url 'post_change_status' %}" method="post">
+            {% csrf_token %} 
+            <p>Выберите новый статус:</p>
+            <div>
+              <input class="hidden" type="text" name="order" value="{{ order }}"> 
+              <input class="hidden" type="text" name="reg_id" value="{{ reg_id }}"> 
+
+              <input type="radio" id="statusChoice1"
+               name="status" value="0">
+              <label for="statusChoice1">Ожидает принятия</label>
+          
+              <input type="radio" id="statusChoice2"
+               name="status" value="1">
+              <label for="statusChoice2">Принят в обработку</label>
+          
+              <input type="radio" id="statusChoice3"
+               name="status" value="2">
+              <label for="statusChoice3">Отклонен</label>
+
+              <input type="radio" id="statusChoice4"
+               name="status" value="3">
+              <label for="statusChoice3">Собран и ожидает отправки</label>
+
+              <input type="radio" id="statusChoice5"
+               name="status" value="4">
+              <label for="statusChoice3">Отправлен</label>
+
+              <input type="radio" id="statusChoice6"
+               name="status" value="5">
+              <label for="statusChoice3">Доставлен в пункт выдачи</label>
+
+              <input type="radio" id="statusChoice7"
+               name="status" value="6">
+              <label for="statusChoice3">Завершен</label>
+            </div>
+            <br>
+            <div>
+              <button class='button-green' type="submit">Отправить</button>
+            </div>
+        </form>
+	</div>
+{% endblock %}

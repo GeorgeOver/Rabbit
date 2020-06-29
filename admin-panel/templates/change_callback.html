@@ -1,0 +1,54 @@
+{% block content %}
+<style type="text/css">
+    .button-green {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+    }
+    .button-green:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+    .sansserif {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+	<h2 class="sansserif">Изменение статуса callback № {{ callback }}</h2>
+	<div>
+        <form class="sansserif" action="{% url 'post_change_callback' %}" method="post">
+            {% csrf_token %} 
+            <p>Выберите новый статус:</p>
+            <div>
+              <input class="hidden" type="text" name="callback" value="{{ callback }}"> 
+
+              <input type="radio" id="statusChoice1"
+               name="status" value="0">
+              <label for="statusChoice1">Активен</label>
+          
+              <input type="radio" id="statusChoice2"
+               name="status" value="1">
+              <label for="statusChoice2">Завершен</label>
+          
+              <input type="radio" id="statusChoice3"
+               name="status" value="2">
+              <label for="statusChoice3">Не удалось дозвониться</label>
+
+            </div>
+            <br>
+            <div>
+              <button class='button-green' type="submit">Отправить</button>
+            </div>
+        </form>
+	</div>
+{% endblock %}
